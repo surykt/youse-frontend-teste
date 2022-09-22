@@ -1,4 +1,5 @@
 import React from "react";
+import SearchBar from "../SearchBar";
 // import API from "../../services/api";
 
 export default function App() {
@@ -30,7 +31,7 @@ export default function App() {
 
   return (
     <main>
-      <input type="text" placeholder="search name or email" />
+      <SearchBar />
       <ul>
         {items.map(item => (
           <li key={item.id}>
