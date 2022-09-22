@@ -1,4 +1,5 @@
 import React from "react";
+import EmailList from "../EmailList";
 import SearchBar from "../SearchBar";
 // import API from "../../services/api";
 
@@ -32,16 +33,7 @@ export default function App() {
   return (
     <main>
       <SearchBar />
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>
-            <article>
-              <h1>{item.title}</h1>
-              <p>{item.description}</p>
-            </article>
-          </li>
-        ))}
-      </ul>
+      <EmailList emails={items} />
     </main>
   );
 }
