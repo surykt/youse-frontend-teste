@@ -1,4 +1,4 @@
-import faker from "faker";
+import { faker } from '@faker-js/faker';
 
 faker.seed(0);
 
@@ -22,7 +22,7 @@ export default {
 
       const allItems = Array.from(Array(200)).map((_, i) => ({
         id: i,
-        title: faker.name.findName(),
+        title: faker.name.fullName(),
         description: faker.internet.email()
       }));
 
