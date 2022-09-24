@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import EmailList from "../EmailList";
 import SearchBar from "../SearchBar";
-// import API from "../../services/api";
+import API from "../../services/api";
 
-export default function App() {
+export default class App extends Component {
   /**
    * These items should be fetched from our API service.
    *
@@ -17,23 +17,33 @@ export default function App() {
    * >
    *
    **/
-  const items = [
-    {
-      id: 0,
-      title: "Fake name 1",
-      description: "fake.email.1@email.com"
-    },
-    {
-      id: 1,
-      title: "Fake name 2",
-      description: "fake.email.2@email.com"
-    }
-  ];
+  constructor(props) {
+    super(props);
 
-  return (
-    <main>
-      <SearchBar />
-      <EmailList emails={items} />
-    </main>
-  );
+    this.state = {
+      emails: []
+      
+    }
+  }
+
+  componentDidMount() {
+    API.fetch({})
+      .then((emails) => {
+        this.setState({
+          emails: emails
+        })
+      })
+  }
+
+
+  render ( ) {
+    const { emails } = this.state
+
+    return (
+      <main>
+        <SearchBar />
+        <EmailList emails={emails} />
+      </main>
+    );
+  }
 }
