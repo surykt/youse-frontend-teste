@@ -21,18 +21,37 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      emails: []
-      
+      emails: [],
+      filterText: ''
     }
+
+    this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+  }
+
+  handleFilterTextChange(filterText) {
+    this.setState({
+      filterText: filterText
+    });
+
+  }
+
+  fetchData() {
+    API.fetch({filter: this.state.filterText})
+    .then((emails) => {
+      this.setState({
+        emails: emails
+      })
+    })
   }
 
   componentDidMount() {
-    API.fetch({})
-      .then((emails) => {
-        this.setState({
-          emails: emails
-        })
-      })
+   this.fetchData()
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.filterText !== prevState.filterText) {
+      this.fetchData();
+    }
   }
 
 
