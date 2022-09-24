@@ -30,7 +30,7 @@ export default {
         .filter(item =>
           !filter
             ? true
-            : item.title.contains(filter) || item.description.contains(filter)
+            : item.title.includes(filter) || item.description.includes(filter)
         )
         .slice(skip, skip + limit);
 
