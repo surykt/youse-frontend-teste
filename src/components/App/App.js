@@ -60,7 +60,10 @@ export default class App extends Component {
 
     return (
       <main>
-        <SearchBar />
+        <SearchBar
+          filterText={this.state.filterText}
+          onFilterTextChange={this.handleFilterTextChange}
+        />
         <EmailList emails={emails} />
       </main>
     );
