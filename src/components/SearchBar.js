@@ -16,7 +16,7 @@ export default class SearchBar extends React.Component  {
   render() {
     return (
 
-      <input className="w-80 h-10 border border-black border-solid rounded ml-40 my-5" type="text" placeholder="Search name or email" onChange={this.handleFilterTextChange} />
+      <input className="w-80 h-10 p-2 border border-black border-solid rounded ml-40 my-5" type="text" placeholder="Search name or email" onChange={this.handleFilterTextChange} />
 
     )
   }
